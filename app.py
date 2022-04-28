@@ -1,9 +1,4 @@
-rom util import database, put_user, create_user_music_table, check_credentials, add_user_music_table, \
-    retrieve_user_table, get_user_id, remove_user_music_table, query
-from models import User
 from flask import Flask, render_template, request, session, redirect
-from flask import Flask, render_template, request, session, redirect
-
 from models import User
 from util import database, put_user, create_user_music_table, check_credentials, add_user_music_table, \
     retrieve_user_table, get_user_id, remove_user_music_table, query
