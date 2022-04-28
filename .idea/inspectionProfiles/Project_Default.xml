@@ -1,0 +1,44 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="17">
+            <item index="0" class="java.lang.String" itemvalue="google-auth" />
+            <item index="1" class="java.lang.String" itemvalue="cachetools" />
+            <item index="2" class="java.lang.String" itemvalue="future" />
+            <item index="3" class="java.lang.String" itemvalue="dill" />
+            <item index="4" class="java.lang.String" itemvalue="google-cloud-datastore" />
+            <item index="5" class="java.lang.String" itemvalue="google-cloud-core" />
+            <item index="6" class="java.lang.String" itemvalue="google-api-core" />
+            <item index="7" class="java.lang.String" itemvalue="google-cloud-bigquery" />
+            <item index="8" class="java.lang.String" itemvalue="pandas" />
+            <item index="9" class="java.lang.String" itemvalue="pyarrow" />
+            <item index="10" class="java.lang.String" itemvalue="dnspython" />
+            <item index="11" class="java.lang.String" itemvalue="typing-inspect" />
+            <item index="12" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="13" class="java.lang.String" itemvalue="mypy-extensions" />
+            <item index="14" class="java.lang.String" itemvalue="numpy" />
+            <item index="15" class="java.lang.String" itemvalue="is-disposable-email" />
+            <item index="16" class="java.lang.String" itemvalue="libcst" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E722" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

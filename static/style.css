@@ -1,0 +1,145 @@
+body {
+    background: #67B26F; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4ca2cd, #67B26F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #000;
+}
+
+
+.product-search {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, .172549) 0 6px 12px 0;
+    cursor: pointer;
+}
+
+.search-element {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+    border-right: 1px solid rgba(10, 10, 10, .1);
+    padding: 1em;
+}
+
+.search-label {
+    font-weight: 700;
+}
+
+.search-input {
+    border: none;
+    appearance: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin-top: 5px;
+}
+
+.search-input:focus {
+    box-shadow: 0px 2px 0px 0px tomato;
+}
+
+.search-button {
+    display: inline-block;
+    flex-grow: 1;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 2em;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 100;
+    border: 0;
+    border-radius: 0px 5px 5px 0px;
+    color: white;
+    background-color: tomato;
+    transition: background-color 0.8s ease;
+}
+
+.search-button:hover {
+    background-color: HSLA(345, 100%, 60%, 1.00);
+}
+
+
+h2 {
+    margin-top: 0;
+}
+
+
+html, body {
+    height: 100%;
+    padding-top: 10px;
+    background: #FFFFFF;
+}
+
+
+.msg-subject {
+    position: absolute;
+    width: 48px;
+    height: 17px;
+    left: 179px;
+    top: 29px;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+.button {
+    margin-bottom: 20px;
+}
+
+
+.content small {
+    color: #00d1b2;
+}
+
+
+.level-item {
+    padding-left: 10px;
+    color: #00d1b2;
+}
+
+input:focus {
+    border-color: #00d1b2;
+}
+
+.likes {
+    padding: 0 7.5px;
+}
+
+input {
+    font-weight: bold;
+}
+
+
+.labels {
+    display: inline-block;
+    margin-bottom: .5rem;
+    font-weight: bold;
+    margin-top: .5rem;
+}

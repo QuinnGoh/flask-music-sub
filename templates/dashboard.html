@@ -1,0 +1,127 @@
+<!doctype html>
+<html style="padding-top: 0px !important;">
+<head>
+    <title>Forum</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Permanent+Marker:400' rel='stylesheet' type='text/css'>
+</head>
+
+<body style="padding-top: 0px !important;">
+<!-- Just an image -->
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/dashboard" style="width: 100px !important; height: 50px !important;">
+
+            <img
+                    src="{{ url_for('static', filename='Logo.png') }}"
+                    height="100%"
+                    width="100%"
+                    loading="lazy"
+            />
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container rounded mt-5 mb-5" style="padding: 30px; background:aliceblue;">
+
+    <h1 style="text-align: center"> Welcome {{ user_name }}, check out your subscriptions below.</h1>
+
+    <div class="card-columns" style="margin-top: 20px !important;">
+
+        {% for song in subscriptions %}
+
+            <div class="card">
+                <img class="card-img-top" src="{{ song.img_url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ song.title }} ({{ song.year }})</h5>
+                    <p class="card-text">{{ song.artist }}</p>
+                    <hr>
+                    <form method="post">
+                        <button type="submit" name='submit_button' value='{{ song.title + "_remove_" }}'
+                                class="btn btn-primary btn-block"
+                                style="margin-top: 10px !important; margin-left: 12px !important; margin-right: 12px !important;">
+                            Remove
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="container rounded bg-white mt-5 mb-5">
+
+
+    <form method="post">
+        <div class="product-search">
+            <div class="search-element">
+                <label class="search-label">What title are you looking for?</label>
+                <input class="search-input" type="text" autocomplete="on" placeholder="Sittin on the dock"
+                       name="title">
+            </div>
+            <div class="search-element">
+                <label class="search-label">Which artist?</label>
+                <input class="search-input" type="text" autocomplete="on" placeholder="Otis Redding" name="artist">
+            </div>
+            <div class="search-element">
+                <label class="search-label">What year?</label>
+                <input class="search-input" type="text" placeholder="1956" class="" autocomplete="on" name="year">
+            </div>
+            <button type="submit" name="submit_button" value="query" class="btn btn-primary btn-block"
+                    style="width: 126px !important; height: 64px !important; padding-top: 12px !important; padding-bottom: 12px !important; margin-left: 20px !important; margin-right: 20px !important;">
+                Search
+            </button>
+
+        </div>
+    </form>
+
+    <div class="card-columns" style="margin-top: 20px !important;">
+
+        {% for song in songs %}
+
+            <div class="card">
+                <img class="card-img-top" src="{{ song.img_url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ song.title }} ({{ song.year }})</h5>
+                    <p class="card-text">{{ song.artist }}</p>
+                    <hr>
+                    <form method="post">
+                        <button type="submit" name='submit_button'
+                                value='{{ song.img_url + "," + song.year + "," + song.title + "," + song.artist + "," + "_subscribe_" }}'
+                                class="btn btn-primary btn-block"
+                                style="margin-top: 10px !important; margin-left: 12px !important; margin-right: 12px !important;">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+</body>
+</html>
