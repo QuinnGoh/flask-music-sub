@@ -120,8 +120,24 @@ def check_exist_email(email, dynamodb=None) -> bool:
         return False
 
 
+
+def get_user_name(email, dynamodb=None):
+    if not dynamodb:
+        dynamodb = boto3.resource('dynamodb')
+
+    table = dynamodb.Table('User')
+
+    try:
+        response = table.get_item(Key={'email': email})
+        return response['Item']['user_name']
+
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+
+
+
 #
-def get_user_id(email, user_name, dynamodb=None):
+def get_user_id(email, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource('dynamodb')
 
@@ -270,7 +286,7 @@ def put_user(user: User, dynamodb=None):
 
 
 #
-def check_credentials(email, user_name, password, dynamodb=None) -> bool:
+def check_credentials(email, password, dynamodb=None) -> bool:
     if not dynamodb:
         dynamodb = boto3.resource('dynamodb')
 

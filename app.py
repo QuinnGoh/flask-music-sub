@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect
 from models import User
 from util import database, put_user, create_user_music_table, check_credentials, add_user_music_table, \
-    retrieve_user_table, get_user_id, remove_user_music_table, query, check_exist_email
+    retrieve_user_table, get_user_id, remove_user_music_table, query, check_exist_email, get_user_name
 
 app = Flask(__name__, template_folder="templates")
 
@@ -118,13 +118,12 @@ def login():
     if request.method == 'POST':
 
         _email = request.form['email']
-        _user_name = request.form['user_name']
         _password = request.form['password']
 
-        if check_credentials(_email, _user_name, _password):
+        if check_credentials(_email, _password):
             session['email'] = _email
-            session['user_name'] = _user_name
-            session['user_id'] = get_user_id(_email, _user_name)
+            session['user_name'] = get_user_name(_email)
+            session['user_id'] = get_user_id(_email)
             return redirect('/dashboard')
         else:
             error = True
