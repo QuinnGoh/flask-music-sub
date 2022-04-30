@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect
 from models import User
 from util import database, put_user, create_user_music_table, check_credentials, add_user_music_table, \
-    retrieve_user_table, get_user_id, remove_user_music_table, query
+    retrieve_user_table, get_user_id, remove_user_music_table, query, check_exist_email
 
 app = Flask(__name__, template_folder="templates")
 
@@ -29,11 +29,8 @@ def register():
         _username = request.form['username']
         _password = request.form['password']
 
-        # if check_exist_id(_id):
-        #    errors.append("ID")
-
-        # if check_exist_username(_username):
-        #    errors.append("Username")
+        if check_exist_email(_email):
+            errors.append("Email")
 
         if not errors:
 
@@ -50,12 +47,16 @@ def register():
 @app.route('/dashboard', methods=['GET', 'POST'])
 def home():
     query_results = []
+    dynamo_resp = " "
 
     # CHECK USER HAS LOGGED IN
     if not session.get('user_name'):
         return redirect('/login')
     else:
         subscriptions = retrieve_user_table(session['user_id'])
+
+        if not subscriptions:
+            dynamo_resp = "noSubscriptions"
 
     # POST CONTENT FROM HTML FORM
     if request.method == 'POST':
@@ -81,6 +82,9 @@ def home():
 
             query_results = query(function, artist, title, year)
 
+            if not query_results:
+                dynamo_resp = "noResults"
+
         if request.form['submit_button'].endswith("_subscribe_"):
             song_details = request.form['submit_button'].split(",")
             img_url = song_details[0]
@@ -101,7 +105,7 @@ def home():
             return redirect('/dashboard')
 
     return render_template('dashboard.html', songs=query_results, subscriptions=subscriptions,
-                           user_name=session['user_name'])
+                           user_name=session['user_name'], dynamo_resp=dynamo_resp)
 
 
 # LOGIN PAGE AND FUNCTIONALITY
